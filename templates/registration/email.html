@@ -1,0 +1,37 @@
+{% extends 'default.html' %}
+{% load static %}
+{% load custom_template_tags %}
+
+{% block content %}
+
+{% if data.error %}
+	{% setvar "is-danger" as danger %}
+{% endif %}
+
+<form method="POST">
+	{% csrf_token %}
+	<div class="box">
+		<h1 class="title">Подтверждение E-mail</h1>
+		<div class="field">
+		  <label class="label is-danger">Код из письма:</label>
+		  <div class="control has-icons-left">
+			<input type="text" name="code" maxlength="6" autofocus
+				   class="input {{danger}}" style="max-width: 10em;"  autocomplete="new-password"
+				   placeholder="username"   required id="id_username">
+			<span class="icon is-small is-left">
+			<i class="fas fa-key"></i>
+			</span>
+			<p class="help is-danger">{{ data.error }}</p>
+			<a href="/register/email/{{data.user}}/resend">Получить новый код</a>
+		  </div>
+		</div>
+		<div class="field">
+		  <button class="button is-success" type="submit">
+			Отправить
+		  </button>
+		</div>
+
+	</div>
+</form>
+
+{% endblock content %}

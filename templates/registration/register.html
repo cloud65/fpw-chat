@@ -1,0 +1,97 @@
+{% extends 'default.html' %}
+{% load static %}
+{% load custom_template_tags %}
+
+{% block content %}
+
+{% setvar "30em" as width %}
+
+{% if form.username.errors %}
+	{% setvar "is-danger" as username_danger %}
+{% endif %}
+
+{% if form.email.errors %}
+	{% setvar "is-danger" as email_danger %}
+{% endif %}
+
+{% if form.password1.errors %}
+	{% setvar "is-danger" as password1_danger %}
+{% endif %}
+
+{% if form.password2.errors %}
+	{% setvar "is-danger" as password2_danger %}
+{% endif %}
+
+<form method="POST">
+{% csrf_token %}
+<div class="box">
+	<h1 class="title">Регистрация пользователя</h1>
+	<p class="help is-danger">{{ form.non_field_errors|striptags }}</p>
+	<div class="field">
+	  <label class="label is-danger">Логин</label>
+	  <div class="control has-icons-left">
+		<input type="text" name="username" maxlength="150" autofocus value="{{data.username}}"
+			   class="input {{username_danger}}" style="max-width: {{width}};"  autocomplete="new-password"
+			   placeholder="username"   required id="id_username">
+		<span class="icon is-small is-left">
+		<i class="fas fa-user"></i>
+		</span>
+		<p class="help is-danger">{{ form.username.errors|striptags }}</p>
+	  </div>
+	</div>
+
+	<div class="field">
+	  <label class="label is-danger">E-mail</label>
+	  <div class="control has-icons-left">
+		<input type="email" name="email" maxlength="150" autofocus value="{{data.email}}"
+			   class="input {{email_danger}}" style="max-width: {{width}};"  autocomplete="new-password"
+			   placeholder="user@example.com"   required id="id_email">
+		<span class="icon is-small is-left">
+		<i class="fas fa-envelope"></i>
+		</span>
+		<p class="help is-danger">{{ form.email.errors|striptags }}</p>
+	  </div>
+	</div>
+
+	<div class="field">
+	  <label class="label is-danger">Пароль</label>
+	  <div class="control has-icons-left">
+		<input type="password" name="password1" maxlength="150" autofocus value="{{data.password1}}"
+			   class="input {{password1_danger}}" style="max-width: {{width}};" autocomplete="new-password"
+			   prequired id="id_password1">
+		<span class="icon is-small is-left">
+		<i class="fas fa-key"></i>
+		</span>
+		<p class="help is-danger">{{ form.password1.errors|striptags }}</p>
+	  </div>
+	</div>
+
+	<div class="field">
+	  <label class="label is-danger">Подтверждение пароля</label>
+	  <div class="control has-icons-left">
+		<input type="password" name="password2" maxlength="150" autofocus value="{{data.password2}}"
+			   class="input {{password2_danger}}" style="max-width: {{width}};" autocomplete="new-password"
+			   prequired id="id_password2">
+		<span class="icon is-small is-left">
+		<i class="fas fa-key"></i>
+		</span>
+		<p class="help is-danger">{{ form.password2.errors|striptags }}</p>
+	  </div>
+	</div>
+
+	<div class="field">
+	  <button class="button is-success" type="submit">
+		Регистрация
+	  </button>
+	</div>
+</div>
+</form>
+
+
+
+
+
+
+
+
+{% endblock content %}

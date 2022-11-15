@@ -1,0 +1,54 @@
+{% extends 'default.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="hero is-light is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+          <form class="box" method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {% if request.GET.username %}
+              <h5>Аккаунт активирован. Пожалуйста, авторизуйтесь.</h5>
+            {% endif %}
+            <div class="field">
+              {{ form.username.errors }}
+              <label for="{{ form.username.id_for_label }}" class="label">Логин</label>
+              <div class="control has-icons-left">
+                {% if request.GET.username %}
+                   <input class="input" type="text" name="username" autofocus="" autocapitalize="none"
+                          autocomplete="username" maxlength="150" id="id_username" readonly value={{request.GET.username}}>
+                {% else %}
+                    <input class="input" type="text" name="username" autofocus="" autocapitalize="none"
+                          autocomplete="username" maxlength="150" required="" id="id_username">
+                {% endif %}
+                <span class="icon is-small is-left">
+                  <i class="fa fa-user"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              {{ form.password.errors }}
+              <label for="{{ form.password.id_for_label }}" class="label">Пароль</label>
+              <div class="control has-icons-left">
+                <input class="input" type="password" name="password" autocomplete="current-password" required="" id="id_password">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-key"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <button class="button is-success" type="submit">
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

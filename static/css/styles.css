@@ -1,0 +1,91 @@
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.main-content {
+    height: 100vh;
+}
+
+.win-modal {
+    height: 80%;
+}
+
+.win-modal-data {
+    
+}
+
+.container-menu {
+    
+}
+
+.chat-menu-item {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.selected-item {
+    background-color: #e9f0f5;
+    border-radius: 8px;
+}
+
+.message-container {
+    margin-left: 0;
+}
+
+.message-box {
+    margin-top: 0.8em;
+    height: calc(100% - 3.3em);
+    display: flex;
+    flex-direction: column;
+}
+
+.messages-list-title {
+    display: flex;
+    flex-direction: row;
+}
+
+.messages-list {
+    height: 100%;
+    overflow-y: auto !important;
+    border-color: #f1f3fb;
+    box-shadow: 0 0 0 0.05em rgb(72 95 199 / 25%);
+    border-radius: 5px;
+}
+
+.margin-0 {
+    margin:0.2em !important;
+}
+
+.text-area-block {
+    display: flex;
+    flex-direction: row;
+}
+
+.text-area-field {
+    width: 100%;
+    padding-right: 0.5em;
+    margin: 0 !important;
+}
+
+.row-message {
+    margin: 0.2em;
+    display: flex;
+}
+
+.row-message .my {
+    margin-left: auto;
+}
+
+.user-message {
+    padding: 0.5em;
+    border-radius: 1em;
+    background-color: #f9f9f9;
+    max-width: 80%;
+}
+
+.user-message.my {
+    background-color: #ebf7ee;
+}
